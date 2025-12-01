@@ -211,7 +211,7 @@ void sapXepSV()
 {
     int chon;
     do {
-       
+        printf("Thuc thi boi uoc: \n");
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);
@@ -221,7 +221,7 @@ void Game()
 {
     int chon;
     do {
-      
+        printf("Thuc thi boi uoc: \n");
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);
@@ -231,7 +231,7 @@ void TTPS()
 {
     int chon;
     do {
-       
+        printf("Thuc thi tinh toan: \n");
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);

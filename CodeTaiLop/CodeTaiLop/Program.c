@@ -53,6 +53,7 @@ int main()
 	char ten[50];
 	printf("Nhap ten cua ban: ");
 	puts(ten);
-	fgets(ten);
+	gets(ten);/*fgets(ten, sizeof(ten), stdin);*/
+	
 	printf("Xin chao, %s!\n", ten);
 }
