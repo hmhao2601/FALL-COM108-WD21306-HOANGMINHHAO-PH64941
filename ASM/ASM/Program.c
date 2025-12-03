@@ -1,13 +1,14 @@
-// CConsoleApplication.c : file nay chua 'main' function. 
+﻿// CConsoleApplication.c : file nay chua 'main' function. 
 // Chuong trinh phan mem Bat dau thuc thi & Ket thuc o day.
 
 #include <stdio.h>
+#include <math.h>
 void kiemTraSoNguyen()
 {
     int chon, x;
     do {
         printf("Nhap x: ");
-        scanf_s("%d", &x );
+        scanf_s("%d", &x);
 
         printf("%d la so nguyen.\n", x);
 
@@ -29,7 +30,7 @@ void kiemTraSoNguyen()
 }
 void uocChungBoiChung()
 {
-	int chon, x, y, a, b;
+    int chon, x, y, a, b;
     do {
         printf("Nhap x: "); scanf_s("%d", &x);
         printf("Nhap y: "); scanf_s("%d", &y);
@@ -37,7 +38,7 @@ void uocChungBoiChung()
         a = x;
         b = y;
 
-        while (b != 0) {     // t�nh UCLN
+        while (b != 0) {     // tính UCLN
             int t = a % b;
             a = b;
             b = t;
@@ -51,8 +52,8 @@ void uocChungBoiChung()
     } while (chon == 1);
 }
 void tinhTienKaraoke() {
-	int chon, gioBD, gioKT;
-	double tien;
+    int chon, gioBD, gioKT;
+    double tien;
     do {
         printf("Nhap gio bat dau (12-23): "); scanf_s("%d", &gioBD);
         printf("Nhap gio ket thuc (12-23): "); scanf_s("%d", &gioKT);
@@ -103,12 +104,12 @@ void tinhTienDien()
             tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kwh - 300) * 2834;
         }
         else {
-            tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (kwh - 400) * 2927;                
-         
+            tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (kwh - 400) * 2927;
+
         }
 
         printf("So tien phai tra: %.0lf VND\n", tien);
-                                 
+
         printf("Tiep tuc chuong trinh [1|khac]: ");
         scanf_s("%d", &chon);
 
@@ -117,7 +118,7 @@ void tinhTienDien()
 //------------------------------------
 void doiTien()
 {
-	int chon, tien;
+    int chon, tien;
     int menhGia[] = { 500,200,100,50,20,10,5,2,1 };
     do {
         printf("Nhap so tien can doi: ");
@@ -148,7 +149,7 @@ void tinhLaiXuatNganHang()
         printf("Nhap so tien muon vay: ");
         scanf_s("%lf", &soTienVay);
 
-        double laiSuat = 0.05; // 5% / th�ng
+        double laiSuat = 0.05; // 5% / tháng
         int kyHan = 12;
         double gocMoiThang = soTienVay / kyHan;
         double soTienConLai = soTienVay;
@@ -173,7 +174,7 @@ void vayTien()
 {
     int chon;
     do {
-        double soTienXe = 500000000;  // 500 tri?u VN?
+        double soTienXe = 500000000;  // 500 triệu VNĐ
         double tyLeVay;
         printf("Nhap ty le vay toi da (0-100): ");
         scanf_s("%lf", &tyLeVay);
@@ -186,7 +187,7 @@ void vayTien()
         double tienVay = soTienXe * tyLeVay / 100;
         double tienTraTruoc = soTienXe - tienVay;
         int thoiHanNam = 24;
-        double laiSuatNam = 0.072;  // 7.2% / n?m
+        double laiSuatNam = 0.072;  // 7.2% / năm
         int soThang = thoiHanNam * 12;
         double gocMoiThang = tienVay / soThang;
 
@@ -195,7 +196,7 @@ void vayTien()
 
         double conLai = tienVay;
         for (int i = 1; i <= soThang; i++) {
-            double laiThang = conLai * (laiSuatNam / 12); // l�i th�ng
+            double laiThang = conLai * (laiSuatNam / 12); // lãi tháng
             double tongThang = gocMoiThang + laiThang;
             conLai -= gocMoiThang;
 
@@ -211,7 +212,7 @@ void sapXepSV()
 {
     int chon;
     do {
-       
+
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);
@@ -221,7 +222,7 @@ void Game()
 {
     int chon;
     do {
-      
+
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);
@@ -231,11 +232,30 @@ void TTPS()
 {
     int chon;
     do {
-       
+        int t1, m1, t2, m2;
+        printf("Nhap phan so 1 (tu mau): "); scanf_s("%d %d", &t1, &m1);
+        printf("Nhap phan so 2 (tu mau): "); scanf_s("%d %d", &t2, &m2);
+
+        int tu, mau, u;
+
+        // Tong
+        tu = t1 * m2 + t2 * m1; mau = m1 * m2; u = gcd(tu, mau); printf("Tong: %d/%d\n", tu / u, mau / u);
+        // Hieu
+        tu = t1 * m2 - t2 * m1; u = gcd(tu, mau); printf("Hieu: %d/%d\n", tu / u, mau / u);
+        // Tich
+        tu = t1 * t2; mau = m1 * m2; u = gcd(tu, mau); printf("Tich: %d/%d\n", tu / u, mau / u);
+        // Thuong
+        tu = t1 * m2; mau = t2 * m1; u = gcd(tu, mau); printf("Thuong: %d/%d\n", tu / u, mau / u);
+
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);
-    
+
+}
+int gcd(int tu, int mau) {
+    if (mau == 0)
+        return tu;
+    return gcd(mau, tu % mau);
 }
 int main()
 {
@@ -273,11 +293,11 @@ int main()
             break;
 
         case 4:
-            doiTien();
+            tinhTienDien();
             break;
 
         case 5:
-            tinhLaiXuatNganHang();
+            doiTien();
             break;
 
         case 6:
