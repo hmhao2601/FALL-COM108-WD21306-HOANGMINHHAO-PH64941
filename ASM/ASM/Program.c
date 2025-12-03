@@ -246,7 +246,7 @@ void sapXepSV()
 
                     char tt[50];
                     strcpy(tt, ten[i]); strcpy(ten[i], ten[j]); strcpy(ten[j], tt);
-
+                    // strcpy ham sao chep chuoi 
                     char tl[20];
                     strcpy(tl, hocLuc[i]); strcpy(hocLuc[i], hocLuc[j]); strcpy(hocLuc[j], tl);
                 }
