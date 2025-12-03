@@ -323,7 +323,7 @@ int gcd(int tu, int mau) {
     return gcd(mau, tu % mau);
 }
 int main()
-
+{
     int chonChucnang;
 
     do
