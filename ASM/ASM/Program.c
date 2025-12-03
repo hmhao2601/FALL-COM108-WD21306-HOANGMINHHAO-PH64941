@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 void kiemTraSoNguyen()
 {
     int chon, x;
@@ -210,18 +211,82 @@ void vayTien()
 //----------------------------------------
 void sapXepSV()
 {
-    int chon;
+    int chon, n;
     do {
+        printf("Nhap so sinh vien: ");
+        scanf_s("%d", &n);
 
+        char ten[100][50];
+        float diem[100];
+        char hocLuc[100][20];
+
+        // Nhập
+        for (int i = 0; i < n; i++) {
+            printf("\nNhap ten sv %d: ", i + 1);
+            fflush(stdin);
+            fgets(ten[i], 50, stdin);
+            ten[i][strcspn(ten[i], "\n")] = 0;
+
+            printf("Nhap diem: ");
+            scanf_s("%f", &diem[i]);
+            fflush(stdin);
+
+            if (diem[i] >= 9) strcpy(hocLuc[i], "Xuat sac");
+            else if (diem[i] >= 8) strcpy(hocLuc[i], "Gioi");
+            else if (diem[i] >= 6.5) strcpy(hocLuc[i], "Kha");
+            else if (diem[i] >= 5) strcpy(hocLuc[i], "Trung binh");
+            else strcpy(hocLuc[i], "Yeu");
+        }
+
+        // Sắp xếp giảm dần
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (diem[i] < diem[j]) {
+                    float td = diem[i]; diem[i] = diem[j]; diem[j] = td;
+
+                    char tt[50];
+                    strcpy(tt, ten[i]); strcpy(ten[i], ten[j]); strcpy(ten[j], tt);
+
+                    char tl[20];
+                    strcpy(tl, hocLuc[i]); strcpy(hocLuc[i], hocLuc[j]); strcpy(hocLuc[j], tl);
+                }
+            }
+        }
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
     } while (chon == 1);
 }
 //-----------------------------------------------
 void Game()
-{
+{      
+    int a, b;          
+    int x, y;          
+    int trung = 0;
     int chon;
     do {
+        printf("Nhap 2 so (01 - 15): ");
+        scanf_s("%d %d", &a, &b);
+
+        // random 2 số từ 1 đến 15
+        x = rand() % 15 + 1;
+        y = rand() % 15 + 1;
+
+        printf("He thong sinh ra: %02d %02d\n", x, y);
+
+        // kiểm tra trúng bao nhiêu số
+        if (a == x || a == y) trung++;
+        if (b == x || b == y) trung++;
+
+        // xử lý kết quả
+        if (trung == 2)
+            printf("Chuc mung! Ban da TRUNG GIAI NHAT!\n");
+        else if (trung == 1)
+            printf("Chuc mung! Ban da TRUNG GIAI NHI!\n");
+        else
+            printf("Chuc ban may man lan sau!\n");
+
+        // reset số trúng cho lần chơi sau
+        trung = 0;
 
         printf("Tiep uc chuong trinh [1|khac]: \n");
         scanf_s("%d", &chon);
