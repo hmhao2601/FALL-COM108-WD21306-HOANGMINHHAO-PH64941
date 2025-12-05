@@ -1,6 +1,6 @@
 ﻿
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 
 void demoString()
 { 
@@ -10,19 +10,55 @@ void demoString()
     {
         scanf_s(" %c", &name[i]);
     }*/
-    char name[50] = { 'A', 'n','h' };
+    char mangKyTu[50] = { 'A', 'n','h' };
 	while (getchar() != '\n');   // doc het cac ky tu cho den khi gap newline
 	printf("Nhap ten cua ban: ");
-	fgets(name, sizeof(name), stdin);
+	fgets(mangKyTu, sizeof(mangKyTu), stdin);
     // Xuat du lieu = for + printf
    /* for (int i = 0; i < 10; i++)
     {
         printf("%c", name[i]);
     }
     printf("\n");*/
-	printf("%s", name);
+	printf("%s", mangKyTu);
 	printf("\n");
     //puts(name);
+
+    printf("String Length: ");
+    printf("%d", strlen(mangKyTu) - 1);
+	printf("\n");
+    printf("String Compare The Same As; ");
+    printf("%d", strcmp("aBc", "aBc"));
+	printf("\n");
+	printf("String Compare Less than: ");
+    printf("%d", strcmp("A", "C"));
+	printf("\n");
+	printf("String Compare Great than: ");
+    printf("%d", strcmp("A", "C"));
+	printf("\n");
+    printf("String Reverse (Encryption: ");
+    printf("%s", strrev(mangKyTu));
+    printf("\n");
+    printf("String Reverse (Decryption: ");
+    printf("%d", strrev("A", "C"));
+    printf("\n");
+    printf("String Lower: ");
+    printf("%s", strlwr(mangKyTu));
+    printf("\n");
+    printf("String Upper: ");
+    printf("%s", strupr(mangKyTu));
+    printf("\n");
+	printf("Find String in String: ");
+    if (strstr(mangKyTu, "A") != NULL)
+    {
+        printf("Found: ");
+        printf("%s", strstr(mangKyTu, "A"));
+    }
+    else
+    {
+        printf("Not Found");
+    }
+	printf("\n");
 }
 void demoMang2Chieu()
 {
